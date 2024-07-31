@@ -15,11 +15,11 @@ COPY ["Pinot_HealthCenter_Analytics_WebAPI.csproj", "Pinot_HealthCenter_Analytic
 RUN dotnet restore "./Pinot_HealthCenter_Analytics_WebAPI/./Pinot_HealthCenter_Analytics_WebAPI.csproj"
 COPY . .
 WORKDIR "/src/Pinot_HealthCenter_Analytics_WebAPI"
-RUN dotnet build "./Pinot_HealthCenter_Analytics_WebAPI.csproj" -c %BUILD_CONFIGURATION% -o /app/build
+RUN dotnet build "./Pinot_HealthCenter_Analytics_WebAPI.csproj" -c %BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Pinot_HealthCenter_Analytics_WebAPI.csproj" -c %BUILD_CONFIGURATION% -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Pinot_HealthCenter_Analytics_WebAPI.csproj" -c %BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
