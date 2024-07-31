@@ -11,7 +11,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Pinot_HealthCenter_Analytics_WebAPI/Pinot_HealthCenter_Analytics_WebAPI.csproj", "Pinot_HealthCenter_Analytics_WebAPI/"]
+COPY ["Pinot_HealthCenter_Analytics_WebAPI.csproj", "Pinot_HealthCenter_Analytics_WebAPI/"]
 RUN dotnet restore "./Pinot_HealthCenter_Analytics_WebAPI/./Pinot_HealthCenter_Analytics_WebAPI.csproj"
 COPY . .
 WORKDIR "/src/Pinot_HealthCenter_Analytics_WebAPI"
