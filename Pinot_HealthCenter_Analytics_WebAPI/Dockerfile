@@ -1,5 +1,5 @@
 # Use the SDK image for the build stage
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 
 # Copy the project file and restore dependencies (use .csproj for the project name)
@@ -13,7 +13,7 @@ Run dotnet restore
 RUN dotnet publish -c Release -o out
 
 # Build the runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 as runtime
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 as runtime
 WORKDIR /app
 COPY --from=build /app/out ./
 
